@@ -1,0 +1,35 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.versions = [
+            'incap' : '0.2',
+            'javapoet' : '1.13.0',
+            'service' : '1.0-rc6',
+    ]
+    ext.deps = [
+            javapoet: "com.squareup:javapoet:${versions.javapoet}",
+            'auto': [
+                    'service': "com.google.auto.service:auto-service:${versions.service}",
+                    'common': 'com.google.auto:auto-common:0.10',
+            ],
+            'guava': 'com.google.guava:guava:24.0-jre',
+            'incap': [
+                    'runtime': "net.ltgt.gradle.incap:incap:${versions.incap}",
+                    'processor': "net.ltgt.gradle.incap:incap-processor:${versions.incap}",
+            ]
+    ]
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.4"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
